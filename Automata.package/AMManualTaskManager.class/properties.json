@@ -1,0 +1,14 @@
+{
+	"category" : "Automata",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mikefilonov 11/13/2015 18:04",
+	"instvars" : [
+		"pendingTasks" ],
+	"name" : "AMManualTaskManager",
+	"pools" : [
+		 ],
+	"super" : "AMTaskManager",
+	"type" : "normal" }

@@ -1,0 +1,15 @@
+{
+	"category" : "Automata",
+	"classinstvars" : [
+		"instance" ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mikefilonov 11/13/2015 18:13",
+	"instvars" : [
+		"executionQueue",
+		"loopProcess" ],
+	"name" : "AMExecutionLoop",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

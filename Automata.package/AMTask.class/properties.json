@@ -1,0 +1,15 @@
+{
+	"category" : "Automata",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "mikefilonov 11/13/2015 18:15",
+	"instvars" : [
+		"loopContinuation",
+		"manager" ],
+	"name" : "AMTask",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

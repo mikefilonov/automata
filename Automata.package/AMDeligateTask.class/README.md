@@ -1,0 +1,1 @@
+I'm a RSTask which use a code block instead of inheritance.

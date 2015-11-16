@@ -1,0 +1,7 @@
+{
+	"class" : {
+		 },
+	"instance" : {
+		"addPendingTask:withState:withCondition:" : "mikefilonov 11/13/2015 17:55",
+		"doNext" : "mikefilonov 11/13/2015 17:56",
+		"pendingTasks" : "mikefilonov 11/13/2015 17:56" } }
