@@ -47,7 +47,15 @@ automata doNext.
 automata stop.
 ```
 
-## ```#wait:``` and ```#waitForEvent:``` methods
+
+## Using Automata
+
+### ```#do:``` and ```#doTask:``` methods
+A task manager (AMTaskManager subclasses) is used to track execution of many tasks. in order to start a new task ```doTask:``` method is used. The method accepts one argument which is a AMTask subclass instance to run
+
+You may also want to use ```do:``` method which is a shorthand for ```AMDeligateTask``` which is build around a block of code, which is passed as an argument. The block must accept one argument which is a task itself
+
+### ```#wait:``` and ```#waitForEvent:``` methods
 
 Automata task saves it's state using ```wait:``` method. This method accepts 1 argument (condition) which is not restricted to any class by automata but defined by a concrete imoplementation of event system. The argument is called "condition" and it's purpose to define a resume condition. The intended way to use it is a Block which accepts an event and returns ```true``` or ```false``` depending on if the event matches the expected description.
 
@@ -58,7 +66,7 @@ event := task waitForEvent: [:event | event selector = #FileUploaded].
 Transcript show: (event at: #filename).
 ```
 
-## AMTaskManager callback protocol
+### AMTaskManager callback protocol
 
 To implement an new automata manager for an event system create a new AMTaskManager subclass and re-implement ```addPendingTask: aTask withState: cc withCondition: condition```
 
@@ -67,13 +75,16 @@ where
 - ```cc``` is a Continuation which should be used to resume the task.
 - ```condition``` is a condition to resume the flow. Defined by the concrete implementation.
 
+This method is called whenever a task reaches ```wait:``` method. In a response a task manager is supposed to save the task in a "pending tasks" collection and resume it when event matching ```condition``` is recieved.
 
-The framework is not providing a default implenentation to store and resume tasks. Your subclass must hava some kind of a queue for tasks and event processor which runs through conditions and put matched ```cc``` to execution loop queue.
+The framework does not provide a default implenentation to store and resume tasks though. This means the task manager implementation must have some kind of a queue for tasks and event processor which runs through conditions and put matched ```cc``` to execution loop queue.
 
-In order to resume a saved task it's current ```cc``` should be put to an execution loop queue:
+### Resuming a pending task
+
+In order to resume a saved task it's latest ```cc``` should be put to an execution loop queue:
 
 ```smalltalk
-self executionLoop enqueue: cc
+automata executionLoop enqueue: cc
 ```
 
 
