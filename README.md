@@ -16,7 +16,7 @@ Metacello new baseline: #Automata; repository: 'github://mikefilonov/automata'; 
 ```
 
 ## Quick start
-The following is an example code which runs on ```AMManualTaskManager``` implementation. In this implementation by "event" concidered the call to "doNext" method.
+The following example uses ```AMManualTaskManager``` implementation to run tasks. Note that by "event" we mean an explicit call to "doNext" method.
 
 Run the following code in Pharo Playground:
 
