@@ -60,15 +60,22 @@ Transcript show: (event at: #filename).
 
 ## AMTaskManager callback protocol
 
-To implement an new automata manager for an event system create a new AMTaskManager subclass and re-implement "addPendingTask: aTask withState: cc withCondition: condition"
+To implement an new automata manager for an event system create a new AMTaskManager subclass and re-implement ```addPendingTask: aTask withState: cc withCondition: condition```
 
 where
 - ```aTask``` is a AMTask instance which represents the code flow and can be used to store some flow-specific properties like "task name".
-- ```cc``` is a Continuation saving the current execution flow of the task
-- ```condition``` concrete AMTaskManager defined structure to hold a condition to resume the state
+- ```cc``` is a Continuation which should be used to resume the task.
+- ```condition``` is a condition to resume the flow. Defined by the concrete implementation.
 
 
-The framework is not providing a default implenentation to store and resume tasks. Your subclass must hava some kind of queue for tasks and event processor which runs through conditions and put matched ```cc``` to execution loop queue.
+The framework is not providing a default implenentation to store and resume tasks. Your subclass must hava some kind of a queue for tasks and event processor which runs through conditions and put matched ```cc``` to execution loop queue.
+
+In order to resume a saved task it's current ```cc``` should be put to an execution loop queue:
+
+```smalltalk
+self executionLoop enqueue: cc
+```
+
 
 ## Implementation details
 
