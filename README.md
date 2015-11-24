@@ -1,11 +1,13 @@
-# Pharo Automata - automation framework
+# Pharo Automata
+Microservices automation framework - the "main" function to drive external APIs.
 
-Automata allows you to run code which can be explicitly "paused" and then "resumed" on arrival of an external event.
+Automata framework is build to automate external microservices communication by allowing code to be explicitly "paused" and then "resumed" on an arrival of an event from an external system. The project is inspired by Seaside ```WATask``` class providing a developer a way to have a explicit code for complex workflows.
 
-The project is inspired by Seaside WATask class providing a developer a way to have a explicit code flow for complex tasks.
+The idea is to have some kind of a state machine which is driving external services by (REST) API and changing it's state depending based on events recieved back. The state machine is represented by a Smalltalk code and "waitForEvent:" method which saves current execution state and resumes it upon a recieving of an event.
 
-Automata can be hooked to any event system by implementing AMTaskManager callbacks protocol. 
-As an example  see ```AMManualTaskManager``` class which implement a FIFO for pending tasks and manual event management.
+Automata state machine can be hooked to any event system by inheriting AMTaskManager and implementing ```callbacks``` protocol.
+
+As an example see ```AMManualTaskManager``` class which implements a FIFO queue for pending tasks and manual event triggering.
 
 ##Installation
 
