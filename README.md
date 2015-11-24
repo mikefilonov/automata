@@ -58,7 +58,7 @@ event := task waitForEvent: [:event | event selector = #FileUploaded].
 Transcript show: (event at: #filename).
 ```
 
-# AMTaskManager callback protocol
+## AMTaskManager callback protocol
 
 To implement an new automata manager for an event system create a new AMTaskManager subclass and re-implement "addPendingTask: aTask withState: cc withCondition: condition"
 
@@ -70,7 +70,7 @@ where
 
 The framework is not providing a default implenentation to store and resume tasks. Your subclass must hava some kind of queue for tasks and event processor which runs through conditions and put matched ```cc``` to execution loop queue.
 
-##Implementation details
+## Implementation details
 
 By default Automata implements single-threaded execution loop in which runable tasks are queued and exected in FIFO order.
 
