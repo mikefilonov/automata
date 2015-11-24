@@ -47,9 +47,31 @@ automata doNext.
 automata stop.
 ```
 
+## ```#wait:``` and ```#waitForEvent:``` methods
+
+Automata task saves it's state using ```wait:``` method. This method accepts 1 argument (condition) which is not restricted to any class by automata but defined by a concrete imoplementation of event system. The argument is called "condition" and it's purpose to define a resume condition. The intended way to use it is a Block which accepts an event and returns ```true``` or ```false``` depending on if the event matches the expected description.
+
+```waitForEvent:``` is an helper method which assumes that condition is to be a block with one argument (suposedly an event) and returns the argument for which the block answered ```true```.
+
+```
+event := task waitForEvent: [:event | event selector = #FileUploaded].
+Transcript show: (event at: #filename).
+```
+
+# AMTaskManager callback protocol
+
+To implement an new automata manager for an event system create a new AMTaskManager subclass and re-implement "addPendingTask: aTask withState: cc withCondition: condition"
+
+where
+- ```aTask``` is a AMTask instance which represents the code flow and can be used to store some flow-specific properties like "task name".
+- ```cc``` is a Continuation saving the current execution flow of the task
+- ```condition``` concrete AMTaskManager defined structure to hold a condition to resume the state
+
+
+The framework is not providing a default implenentation to store and resume tasks. Your subclass must hava some kind of queue for tasks and event processor which runs through conditions and put matched ```cc``` to execution loop queue.
+
 ##Implementation details
 
-
-By default Automata implements single-threaded execution loop in which runable tasks are queued and exected in FIFO.
+By default Automata implements single-threaded execution loop in which runable tasks are queued and exected in FIFO order.
 
 For more implementation details please refer to RESTAnnouncer project at https://github.com/mikefilonov/restannouncer
