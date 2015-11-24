@@ -1,4 +1,4 @@
-# Pharo Automata - automation base framework
+# Pharo Automata - automation framework
 
 Automata allows you to run code which can be explicitly "paused" and then "resumed" on arrival of an external event.
 
