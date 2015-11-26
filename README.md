@@ -1,7 +1,7 @@
 # Pharo Automata
 Microservices automation framework - the "main" function to drive external APIs.
 
-Automata allows a Pharo developer to write automation scripts for external microservices (twitter, google, or any) in Pharo. The project main idea is inspired by Seaside ```WATask``` class which allows coding of a complex communication in workflow based style.
+Automata allows a Pharo developer to write automation scripts for external microservices (or APIs like twitter, google, or any) in Pharo. The project main idea is inspired by Seaside ```WATask``` class which allows coding of a complex communication in workflow based style.
 
 The concept is some kind of a state machine which drives external services via (REST) API and changes it's state  based on events recieved back. The state machine is represented by a Smalltalk code and "waitForEvent:" method which saves current execution state and resumes it upon a recieving of an event.
 
