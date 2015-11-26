@@ -16,9 +16,10 @@ Metacello new baseline: #Automata; repository: 'github://mikefilonov/automata'; 
 ```
 
 ## Quick start
-The following example uses ```AMManualTaskManager``` implementation to run tasks. Note that by "event" we mean an explicit call to "doNext" method.
 
-Run the following code in Pharo Playground:
+You may find an full-fledged example for external service automation here: https://github.com/mikefilonov/automata-example
+
+The following is an example of Automata only and uses ```AMManualTaskManager``` implementation to run tasks. Note that in scope of this example by term "event" we mean an explicit call to "doNext" method.
 
 ```smalltalk
 automata := AMManualTaskManager new.
